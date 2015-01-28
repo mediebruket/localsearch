@@ -44,8 +44,14 @@ function finnlokalhistorie_func ($atts){
 
 extract(shortcode_atts(array(
 	'width' => "250px",
-	'makstreff' => "25"
+	'makstreff' => "25",
+	'show_heading' => false,
    ), $atts));
+
+if ( $show_heading === 'false' ) {
+	$show_heading = false;
+}
+$show_heading = (boolean) $show_heading;
 
 // DEFINE HTML TO OUTPUT WHEN SHORTCODE IS FOUND 
 
@@ -60,7 +66,11 @@ $htmlout .= "* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full sour
 $htmlout .= "***********************************************/";
 $htmlout .= '</script>';
 $htmlout .= '<div class="lokalhistorie_skjema" style="width: ' . $width . '">';
-$htmlout .= '<h2 style="text-align: center;">S&oslash;k i lokalhistorie</h2>';
+
+if ( $show_heading ) {
+	$htmlout .= '<h2 style="text-align: center;">S&oslash;k i lokalhistorie</h2>';
+}
+
 $htmlout .= '<form id="lokalhistform" target="_blank" method="GET" action="' . plugins_url('lokalhist_fullpagesearch.php' , __FILE__) . '">';
 
 $htmlout .= '<table style="width: 85%; border: 0; margin: 0; padding: 0;"><tr><td style="border: 0; padding: 0; margin: 0; vertical-align: middle; width: 80%;">';
