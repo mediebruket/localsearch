@@ -3,7 +3,7 @@
 /**
  *
  * @package   History Search by Webloft
- * @author    Håkon Sundaune <haakon@bibliotekarensbestevenn.no>
+ * @author    HÃ¥kon Sundaune <haakon@bibliotekarensbestevenn.no>
  * @license   GPL-3.0+
  * @link      http://www.bibvenn.no/finnlokalhist 
  * @copyright 2014 Sundaune
@@ -54,7 +54,7 @@ $width = strip_tags(stripslashes($width));
 $htmlout = '<script type="text/javascript">';
 $htmlout .= "var pluginsUrl = '" . plugins_url('/search.php' , __FILE__) . "'";
 $htmlout .= "/***********************************************";
-$htmlout .= "* Tab Content script v2.2- © Dynamic Drive DHTML code library (www.dynamicdrive.com)";
+$htmlout .= "* Tab Content script v2.2- Â© Dynamic Drive DHTML code library (www.dynamicdrive.com)";
 $htmlout .= "* This notice MUST stay intact for legal use";
 $htmlout .= "* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code";
 $htmlout .= "***********************************************/";
@@ -73,7 +73,7 @@ $htmlout .= '<br style="clear: both;">';
 //$htmlout .= '</form>';
 $htmlout .= '</div>';
 $htmlout .= '<h4 id="lokalhistorieresults-text" style="display: none;">';
-//$htmlout .= '<img style="float: left; margin-right: 2%; margin-bottom: 5px; box-shadow: none; width: 40px;" class="webloftlogo" src="' . plugins_url( 'g/webloftlogo.png', __FILE__ ) . '" alt="Bibliotekarens beste venn / Webløft" />';
+//$htmlout .= '<img style="float: left; margin-right: 2%; margin-bottom: 5px; box-shadow: none; width: 40px;" class="webloftlogo" src="' . plugins_url( 'g/webloftlogo.png', __FILE__ ) . '" alt="Bibliotekarens beste venn / WeblÃ¸ft" />';
 $htmlout .= 'Viser maks. ' . $makstreff . ' treff for: <b id="finnlokalhistorie_search-string"></b><br /><i>S&oslash;ket oppdateres mens du skriver, og kan ta noen sekunder... v&aelig;r t&aring;lmodig! Vil du &aring;pne s&oslash;ket i et eget vindu og eventuelt vise flere treff, klikk <input style="vertical-align: top;" type="submit" value="her!"></form></i></h4>';
 $htmlout .= '<div id="finnlokalhistorie_results" style="' . $width . '"></div>';
 
@@ -191,7 +191,7 @@ class finnlokalhistorie_widget extends WP_Widget {
 			__( 'Finn lokalhistorie-widget', $this->get_widget_slug() ),
 			array(
 				'classname'  => $this->get_widget_slug().'-class',
-				'description' => __( 'Sett inn en søkeboks for å finne lokalhistorisk materiale.', $this->get_widget_slug() )
+				'description' => __( 'Sett inn en sÃ¸keboks for Ã¥ finne lokalhistorisk materiale.', $this->get_widget_slug() )
 			)
 		);
 
@@ -247,7 +247,7 @@ class finnlokalhistorie_widget extends WP_Widget {
 		if ( isset ( $cache[ $args['widget_id'] ] ) )
 			return print $cache[ $args['widget_id'] ];
 		
-		// go on with your widget logic, put everything into a string and …
+		// go on with your widget logic, put everything into a string and Â…
 
 
 		extract( $args, EXTR_SKIP );
