@@ -17,7 +17,7 @@
 	width: 100%;
 	}
 
-b#finnlokalhistorie_search-string {
+#finnlokalhistorie_search-string {
 	color: #800;
 	}
 
@@ -99,7 +99,7 @@ img.webloftlogo {
 	margin-right: 8%;
 	}
 
-h4#lokalhistorieresults-text {
+#lokalhistorieresults-text {
 	margin: 0;
 	line-height: 30px;
 	}
