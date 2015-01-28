@@ -367,7 +367,7 @@ foreach ($norvegianatreff as $singeltreff) {
 <li style="margin: 0;"><a href="#" rel="lokalhistorietab4">Norvegiana (<?php echo (int)$norvegianaantalltreff;?>)</a></li>
 </ul>
 
-<div style="background-color: #eee; margin-bottom: 1em; padding: 10px; max-height: 400px; overflow: auto;">
+<div>
 
 <div id="lokalhistorietab1" class="lokalhistorietabcontent">
 <?php 
