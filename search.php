@@ -25,9 +25,9 @@ error_reporting(-1);
 
 // INNSTILLINGER
 $makstreff = (int)$_REQUEST['makstreff']; // hvor mange treff henter vi maks fra hvert sted? Definert i shortcode
-$bokhyllaft = 'false'; // fulltekstsøk i Bokhylla? (gir myriader av treff)
-$bilderft = 'true'; // fulltekstsøk i bilder? Kan like gjerne stå på
-$aviserft = 'true'; // fulltekstsøk i aviser? Kan like gjerne stå på
+$bokhyllaft = 'false'; // fulltekstsÃ¸k i Bokhylla? (gir myriader av treff)
+$bilderft = 'true'; // fulltekstsÃ¸k i bilder? Kan like gjerne stÃ¥ pÃ¥
+$aviserft = 'true'; // fulltekstsÃ¸k i aviser? Kan like gjerne stÃ¥ pÃ¥
 
 // vi trenger funksjoner
 require_once ('includes/functions.php');
@@ -52,11 +52,11 @@ $singlehtml .= "<br style=\"clear: both;\">";
 $singlehtml .= "</div>\n\n";
 
 
-// Søke i bokhylla emne lokalhistorie
+// SÃ¸ke i bokhylla emne lokalhistorie
 
-//$rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=digital:Ja&fq=mediatype:(Bøker)&fq=contentClasses:<!MATERIAL!>&itemsPerPage=" . $makstreff . "&ft=" . $bokhyllaft;
+//$rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=digital:Ja&fq=mediatype:(BÃ¸ker)&fq=contentClasses:<!MATERIAL!>&itemsPerPage=" . $makstreff . "&ft=" . $bokhyllaft;
 
-$rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=mediatype:(Bøker)&fq=contentClasses:(bokhylla%20OR%20public)&fq=subject:lokalhistorie&fq=digital:Ja&itemsPerPage=" . $makstreff . "&ft=" . $bokhyllaft;
+$rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=mediatype:(BÃ¸ker)&fq=contentClasses:(bokhylla%20OR%20public)&fq=subject:lokalhistorie&fq=digital:Ja&itemsPerPage=" . $makstreff . "&ft=" . $bokhyllaft;
 
 // HER KOMMER EV. SJEKKBOKSER INN I SPILL, PARAMETER SENDES FRA JAVASCRIPTET
 
@@ -78,7 +78,7 @@ switch ($_REQUEST['format']) {
 }
 */
 
-$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn søketerm
+$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn sÃ¸keterm
 
 // LASTE TREFFLISTE SOM XML
 $xml = get_content($rawurl);
@@ -87,7 +87,7 @@ $xmldata = simplexml_load_string($xml);
 // FINNE ANTALL TREFF
 $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
-// ... SÅ HVERT ENKELT TREFF
+// ... SÃ… HVERT ENKELT TREFF
 	$teller = 0;
 	foreach ($xmldata->entry as $entry) {
 		if ($teller < $makstreff) {
@@ -120,7 +120,7 @@ $bokhyllaantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 			$bokhyllatreff[$teller]['kilde'] = "Nasjonalbiblioteket";
 			$teller++;
 		}
-	} // SLUTT PÅ HVERT ENKELT TREFF
+	} // SLUTT PÃ… HVERT ENKELT TREFF
 
 foreach ($bokhyllatreff as $singeltreff) {
 		$bokhyllatreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
@@ -135,11 +135,11 @@ foreach ($bokhyllatreff as $singeltreff) {
 }
 
 
-// Søke i NBs bilder
+// SÃ¸ke i NBs bilder
 
 $rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=mediatype:Bilder&fq=contentClasses:public&fq=digital:Ja&itemsPerPage=" . $makstreff . "&ft=" . $bilderft;
 
-$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn søketerm
+$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn sÃ¸keterm
 
 // LASTE TREFFLISTE SOM XML
 $xmlfile = get_content($rawurl);
@@ -148,7 +148,7 @@ $xmldata = simplexml_load_string($xmlfile);
 // FINNE ANTALL TREFF
 $bilderantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
-// ... SÅ HVERT ENKELT TREFF
+// ... SÃ… HVERT ENKELT TREFF
 	$teller = 0;
 	foreach ($xmldata->entry as $entry) {
 		if ($teller < $makstreff) {
@@ -185,7 +185,7 @@ $bilderantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 			
 			$teller++;
 		}
-	} // SLUTT PÅ HVERT ENKELT TREFF
+	} // SLUTT PÃ… HVERT ENKELT TREFF
 
 foreach ($bildertreff as $singeltreff) {
 		$bildertreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
@@ -202,11 +202,11 @@ foreach ($bildertreff as $singeltreff) {
 
 
 
-// Søke i NBs aviser
+// SÃ¸ke i NBs aviser
 
 $rawurl = "http://www.nb.no/services/search/v2/search?q=<!QUERY!>&fq=mediatype:(Aviser)&fq=contentClasses:(restricted%20OR%20public)&fq=digital:Ja&itemsPerPage=" . $makstreff . "&ft=" . $aviserft;
 
-$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn søketerm
+$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn sÃ¸keterm
 
 // LASTE TREFFLISTE SOM XML
 $xmlfile = get_content($rawurl);
@@ -215,7 +215,7 @@ $xmldata = simplexml_load_string($xmlfile);
 // FINNE ANTALL TREFF
 $aviserantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
-// ... SÅ HVERT ENKELT TREFF
+// ... SÃ… HVERT ENKELT TREFF
 	$teller = 0;
 	foreach ($xmldata->entry as $entry) {
 		if ($teller < $makstreff) {
@@ -240,8 +240,8 @@ $aviserantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 
 			// FINNE OMSLAG
 			foreach ($structxmldata->div as $utgave) {
-				if ($utgave->attributes()->ORDER == "1") { // Hvis første side
-				$sideid = $utgave->resource->attributes("xlink", TRUE)->href; //  FÅR MED FILENDELSE!
+				if ($utgave->attributes()->ORDER == "1") { // Hvis fÃ¸rste side
+				$sideid = $utgave->resource->attributes("xlink", TRUE)->href; //  FÃ…R MED FILENDELSE!
 				}
 			}			
 			
@@ -254,7 +254,7 @@ $aviserantalltreff = substr(stristr($xmldata->subtitle, " of ") , 4);
 			
 			$teller++;
 		}
-	} // SLUTT PÅ HVERT ENKELT TREFF
+	} // SLUTT PÃ… HVERT ENKELT TREFF
 
 foreach ($avisertreff as $singeltreff) {
 		$avisertreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
@@ -269,12 +269,12 @@ foreach ($avisertreff as $singeltreff) {
 }
 
 
-// Søke i norvegiana.no
+// SÃ¸ke i norvegiana.no
 
 //$rawurl = "http://kulturnett2.delving.org/api/search?query=<!QUERY!>%20AND%20abm_county_text%3Abuskerud%20AND%20delving_hasDigitalObject%3Atrue";
 $rawurl = "http://kulturnett2.delving.org/api/search?query=<!QUERY!>%20AND%20delving_hasDigitalObject%3Atrue";
 
-$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn søketerm
+$rawurl = str_replace ("<!QUERY!>" , $search_string , $rawurl); // sette inn sÃ¸keterm
 
 // LASTE TREFFLISTE SOM XML
 $xmlfile = get_content($rawurl);
@@ -287,7 +287,7 @@ $xmldata = simplexml_load_string($xmlfile);
 // FINNE ANTALL TREFF
 $norvegianaantalltreff = $xmldata->query->attributes()->numFound;
 
-// ... SÅ HVERT ENKELT TREFF
+// ... SÃ… HVERT ENKELT TREFF
 	$teller = 0;
 	foreach ($xmldata->items->item as $entry) {
 		if ($teller < $makstreff) {
@@ -296,7 +296,7 @@ $norvegianaantalltreff = $xmldata->query->attributes()->numFound;
 			if (substr($dc->date, 0, 6) == "start=") { // dilledato
 				$rawdate = substr ($dc->date, 6, 10);
 				$mindato = substr ($rawdate, 8, 2) . "." . substr ($rawdate, 5, 2) . "." . substr ($rawdate , 0, 4);
-				if (substr($mindato, 0, 6) == "01.01.") { // Første i første er som regel bare tull
+				if (substr($mindato, 0, 6) == "01.01.") { // FÃ¸rste i fÃ¸rste er som regel bare tull
 					$mindato = substr($mindato, 6, 4);
 				}
 			} else { // ikke tulledato
@@ -337,7 +337,7 @@ $norvegianaantalltreff = $xmldata->query->attributes()->numFound;
 			$teller++;
 			
 		}
-	} // SLUTT PÅ HVERT ENKELT TREFF
+	} // SLUTT PÃ… HVERT ENKELT TREFF
 
 foreach ($norvegianatreff as $singeltreff) {
 		$norvegianatreffhtml = str_replace ("twitterurlString" , urlencode($singeltreff['url']) , $singlehtml);
@@ -353,10 +353,10 @@ foreach ($norvegianatreff as $singeltreff) {
 
 
 
-// Søke i historieboka.no
+// SÃ¸ke i historieboka.no
 
 
-// FERDIG MED Å SØKE - SKRIVE UT RESULTATER
+// FERDIG MED Ã… SÃ˜KE - SKRIVE UT RESULTATER
 
 ?>
 
