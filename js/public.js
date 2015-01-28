@@ -10,14 +10,14 @@ jQuery('form#lokalhistform').on("keyup keypress", function(e) {
 // Tabbed content
 
 jQuery(document).ready(function(){
-    jQuery("ul#finnlokalhistorietabs li").click(function(e){
+    jQuery("#finnlokalhistorietabs li").click(function(e){
         if (!jQuery(this).hasClass("active")) {
             var tabNum = jQuery(this).index();
             var nthChild = tabNum+1;
-            jQuery("ul#finnlokalhistorietabs li.active").removeClass("active");
+            jQuery("#finnlokalhistorietabs li.active").removeClass("active");
             jQuery(this).addClass("active");
-            jQuery("ul#finnlokalhistorietab li.active").removeClass("active");
-            jQuery("ul#finnlokalhistorietab li:nth-child("+nthChild+")").addClass("active");
+            jQuery("#finnlokalhistorietab li.active").removeClass("active");
+            jQuery("#finnlokalhistorietab li:nth-child("+nthChild+")").addClass("active");
         }
     });
 });
@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
 	    var query_value = jQuery('input#lokalhistorie_search').val();
 	    var makstreff = jQuery('input#finnlokalhist_makstreff').val();
 		//var formater = jQuery('input#XXX:checked').val() + jQuery('input#YYY:checked').val();
-	    jQuery('b#finnlokalhistorie_search-string').html(query_value);
+	    jQuery('#finnlokalhistorie_search-string').html(query_value);
 		if(query_value !== '') {
 		jQuery.ajax({
 				type: "POST",
@@ -76,10 +76,10 @@ jQuery(document).ready(function() {
 	    //if (search_string == '') {
 		if (search_string.length < 3) {
 		   	jQuery("#finnlokalhistorie_results").fadeOut();
-	    	jQuery('h4#lokalhistorieresults-text').fadeOut();
+	    	jQuery('#lokalhistorieresults-text').fadeOut();
 	    }else{
 	    	jQuery("#finnlokalhistorie_results").fadeIn();
-	    	jQuery('h4#lokalhistorieresults-text').fadeIn();
+	    	jQuery('#lokalhistorieresults-text').fadeIn();
 	    	jQuery(this).data('timer', setTimeout(lokalhistoriesearch, 100));
 	    };
 	    
