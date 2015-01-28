@@ -68,7 +68,7 @@ $htmlout .= '</script>';
 $htmlout .= '<div class="lokalhistorie_skjema" style="width: ' . $width . '">';
 
 if ( $show_heading ) {
-	$htmlout .= '<h2 style="text-align: center;">S&oslash;k i lokalhistorie</h2>';
+	$htmlout .= '<h2>S&oslash;k i lokalhistorie</h2>';
 }
 
 $htmlout .= '<form id="lokalhistform" target="_blank" method="GET" action="' . plugins_url('lokalhist_fullpagesearch.php' , __FILE__) . '">';
