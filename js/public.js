@@ -39,13 +39,15 @@ jQuery("img").error(function(){
         $(this).hide();
 });
 
+var finnlokalhistorie_input_selector = '#lokalhistorie_search';
+
 // Start Ready
 jQuery(document).ready(function() {  
 
 	// Live Search
 	// On Search Submit and Get Results
     function lokalhistoriesearch() {
-	    var query_value = jQuery('input#lokalhistorie_search').val();
+	    var query_value = jQuery(finnlokalhistorie_input_selector).val();
 	    var makstreff = jQuery('input#finnlokalhist_makstreff').val();
       var show_share_links = jQuery('#finnlokalhist_show_share_links').val();
 
@@ -67,13 +69,13 @@ jQuery(document).ready(function() {
 
 	//jQuery("input#lokalhistorie_search").live("keyup", function(e) {
 	//jQuery( document ).on("keyup click", "input#search, input#pdf, input#epub", function(e) {
-	jQuery( document ).on("keyup", "input#lokalhistorie_search, input#XXX, input#YYY", function(e) {
+	jQuery( document ).on("keyup", finnlokalhistorie_input_selector + ", input#XXX, input#YYY", function(e) {
 		// Set Timeout
 	    clearTimeout(jQuery.data(this, 'timer'));
 
 	    // Set Search String
 	    //var search_string = jQuery(this).val();
-		var search_string = jQuery('input#lokalhistorie_search').val();
+		var search_string = jQuery(finnlokalhistorie_input_selector).val();
 		// Do Search
 	    //if (search_string == '') {
 		if (search_string.length < 3) {
