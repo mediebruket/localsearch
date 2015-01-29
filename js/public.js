@@ -47,6 +47,8 @@ jQuery(document).ready(function() {
     function lokalhistoriesearch() {
 	    var query_value = jQuery('input#lokalhistorie_search').val();
 	    var makstreff = jQuery('input#finnlokalhist_makstreff').val();
+      var show_share_links = jQuery('#finnlokalhist_show_share_links').val();
+
 		//var formater = jQuery('input#XXX:checked').val() + jQuery('input#YYY:checked').val();
 	    jQuery('#finnlokalhistorie_search-string').html(query_value);
 		if(query_value !== '') {
@@ -54,7 +56,7 @@ jQuery(document).ready(function() {
 				type: "POST",
 				url: pluginsUrl,
 				//data: { query: query_value, format : formater },
-				data: { query: query_value, makstreff : makstreff },
+				data: { query: query_value, makstreff : makstreff, show_share_links: show_share_links },
 				cache: true,
 				success: function(lokalhistoriehtml){
 					jQuery("#finnlokalhistorie_results").html(lokalhistoriehtml);

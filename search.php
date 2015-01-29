@@ -28,6 +28,7 @@ $makstreff = (int)$_REQUEST['makstreff']; // hvor mange treff henter vi maks fra
 $bokhyllaft = 'false'; // fulltekstsøk i Bokhylla? (gir myriader av treff)
 $bilderft = 'true'; // fulltekstsøk i bilder? Kan like gjerne stå på
 $aviserft = 'true'; // fulltekstsøk i aviser? Kan like gjerne stå på
+$show_share_links = (int)$_REQUEST['show_share_links'];
 
 // vi trenger funksjoner
 require_once ('includes/functions.php');
@@ -46,8 +47,10 @@ $singlehtml .= "<img class=\"lokalhistorieresultcover\" src=\"omslagString\" alt
 $singlehtml .= "<b>titleString</b>\n";
 $singlehtml .= "</a>\n";
 $singlehtml .= "<br /><span class=\"lokalhistorieresultdescription\">descriptionString</span><br />\n";
-$singlehtml .= '<a target="_blank" href="https://twitter.com/intent/tweet?url=twitterurlString&via=bibvenn&text=twitterdescriptionString&related=bibvenn,sundaune&lang=no"><img style="width: 20px; height: 20px;" src="' . $litentwitt . '" alt="Twitter-deling" /></a>&nbsp;';
-$singlehtml .= "<a target=\"_self\" href=\"javascript:fbShare('urlString', 700, 350)\"><img style=\"width: 50px; height: 21px;\" src=\"" . $litenface . "\" alt=\"Facebook-deling\" /></a>";
+if ( $show_share_links ) {
+	$singlehtml .= '<a target="_blank" href="https://twitter.com/intent/tweet?url=twitterurlString&via=bibvenn&text=twitterdescriptionString&related=bibvenn,sundaune&lang=no"><img style="width: 20px; height: 20px;" src="' . $litentwitt . '" alt="Twitter-deling" /></a>&nbsp;';
+	$singlehtml .= "<a target=\"_self\" href=\"javascript:fbShare('urlString', 700, 350)\"><img style=\"width: 50px; height: 21px;\" src=\"" . $litenface . "\" alt=\"Facebook-deling\" /></a>";
+}
 $singlehtml .= "<br style=\"clear: both;\">";
 $singlehtml .= "</div>\n\n";
 

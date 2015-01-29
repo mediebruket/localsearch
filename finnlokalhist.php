@@ -46,12 +46,18 @@ extract(shortcode_atts(array(
 	'width' => "250px",
 	'makstreff' => "25",
 	'show_heading' => false,
+	'show_share_links' => false
    ), $atts));
 
 if ( $show_heading === 'false' ) {
 	$show_heading = false;
 }
 $show_heading = (boolean) $show_heading;
+
+if ( $show_share_links === 'false' ) {
+	$show_share_links = false;
+}
+$show_share_links = (boolean) $show_share_links;
 
 // DEFINE HTML TO OUTPUT WHEN SHORTCODE IS FOUND 
 
@@ -79,6 +85,7 @@ $htmlout .= '<input name="query" type="text" autocomplete="off" id="lokalhistori
 //$htmlout .= '<input type="submit" value="" class="finnebok_submit" />';
 $htmlout .= '</td></tr></table>';
 $htmlout .= '<input type="hidden" id="finnlokalhist_makstreff" value="' . $makstreff . '" />';
+$htmlout .= '<input type="hidden" name="show_share_links" id="finnlokalhist_show_share_links" value="' . $show_share_links . '" />';
 $htmlout .= '<br style="clear: both;">';
 //$htmlout .= '</form>';
 $htmlout .= '</div>';
