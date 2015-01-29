@@ -51,6 +51,8 @@ jQuery(document).ready(function() {
    var show_share_links = jQuery('#finnlokalhist_show_share_links').val();
 
    jQuery('#finnlokalhistorie_search-string').html(query_value);
+   var $loader = jQuery('#fhls_loader')
+   flhs_toggle_loader($loader);
    if(query_value !== '') {
     current_request = jQuery.ajax({
       type: "POST",
@@ -59,6 +61,7 @@ jQuery(document).ready(function() {
       cache: true,
       success: function(lokalhistoriehtml){
        jQuery("#finnlokalhistorie_results").html(lokalhistoriehtml);
+       flhs_toggle_loader($loader);
      }
    });
   }
@@ -87,3 +90,7 @@ jQuery( document ).on("keyup", finnlokalhistorie_input_selector, function(e) {
   });
 
 });
+
+function flhs_toggle_loader(elem) {
+  elem.toggleClass('progress');
+}
