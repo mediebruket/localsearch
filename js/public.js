@@ -37,6 +37,9 @@ jQuery("img").error(function(){
 
 var finnlokalhistorie_input_selector = '#lokalhistorie_search';
 
+// Holds ajax request
+var current_request;
+
 // Start Ready
 jQuery(document).ready(function() {
 
@@ -49,7 +52,7 @@ jQuery(document).ready(function() {
 
    jQuery('#finnlokalhistorie_search-string').html(query_value);
    if(query_value !== '') {
-    jQuery.ajax({
+    current_request = jQuery.ajax({
       type: "POST",
       url: pluginsUrl,
       data: { query: query_value, makstreff : makstreff, show_share_links: show_share_links },
@@ -75,6 +78,10 @@ jQuery( document ).on("keyup", finnlokalhistorie_input_selector, function(e) {
     } else{
       jQuery("#finnlokalhistorie_results").fadeIn();
       jQuery('#lokalhistorieresults-text').fadeIn();
+
+      if ( current_request ) {
+        current_request.abort();
+      }
       jQuery(this).data('timer', setTimeout(lokalhistoriesearch, 100));
     };
   });
