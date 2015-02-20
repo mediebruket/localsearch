@@ -1,16 +1,4 @@
 .lokalhistorieresult {
-/*
-  border: 1px solid #999;
-  margin-bottom: 10px;
-  box-shadow: 3px 3px 1px #ccc;
-  padding: 10px 1%;
-  float: left;
-  width: 46%;
-  margin-right: 1%;
-  height: 100px;
-  line-height: 1em;
-  background: transparent;
-  */
   border: none;
   margin-bottom: 10px;
   padding: 0;
@@ -46,19 +34,6 @@ img.lokalhistorieresultcover {
 .lokalhistorie_skjema h2 {
   width: 100%;
 }
-
-/*
-.lokalhistorie_skjema input[type=text] {
-  font-weight: bold;
-  font-size: 1.2em;
-  background-color: #ccc;
-  width: 80%;
-  margin-left: 8%;
-  border: 1px solid #333;
-  border-radius: 5px;
-  padding: 1% 2%;
-  }
-  */
 
 .lokalhistorie_skjema input[type="submit"] {
   background-image: url(../g/search.png);
