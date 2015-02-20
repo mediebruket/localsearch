@@ -1,6 +1,7 @@
 .lokalhistorieresult {
   border: none;
   margin-bottom: 10px;
+  overflow: hidden;
   padding: 0;
   width: 100%;
 }
