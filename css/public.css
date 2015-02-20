@@ -182,6 +182,10 @@ img.webloftlogo {
   border-radius: .2em;
   background: #eee;
   box-shadow: 0 3.5em #eee; /* container height - part height */
+  -webkit-transform-origin: 50% 2.5em;
+  -moz-transform-origin: 50% 2.5em;
+  -ms-transform-origin: 50% 2.5em;
+  -o-transform-origin: 50% 2.5em;
   transform-origin: 50% 2.5em; /* container height / 2 */
 }
 
@@ -190,16 +194,25 @@ img.webloftlogo {
 }
 
 .fhls-progress:after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
   background: #777;
 }
 
 .fhls-progress > div:before {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
   background: #999;
 }
 
 .fhls-progress > div:after {
+  -webkit-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
   background: #bbb;
 }
