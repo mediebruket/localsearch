@@ -70,7 +70,7 @@ jQuery(document).ready(function() {
 
 jQuery( document ).on("keyup", finnlokalhistorie_input_selector, function(e) {
     // Set Timeout
-   clearTimeout(jQuery.data(this, 'timer'));
+    clearTimeout(jQuery.data(this, 'timer'));
 
       // Set Search String
       var search_string = jQuery(finnlokalhistorie_input_selector).val();
