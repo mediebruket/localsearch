@@ -52,7 +52,9 @@ jQuery(document).ready(function() {
 
    jQuery('#finnlokalhistorie_search-string').html(query_value);
    var $loader = jQuery('#fhls_loader')
-   flhs_toggle_loader($loader);
+   var loader_class = 'fhls-progress';
+   $loader.addClass(loader_class);
+
    if(query_value !== '') {
     current_request = jQuery.ajax({
       type: "POST",
@@ -61,7 +63,7 @@ jQuery(document).ready(function() {
       cache: true,
       success: function(lokalhistoriehtml){
        jQuery("#finnlokalhistorie_results").html(lokalhistoriehtml);
-       flhs_toggle_loader($loader);
+       $loader.removeClass(loader_class);
      }
    });
   }

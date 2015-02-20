@@ -179,7 +179,7 @@ img.webloftlogo {
   }
 }
 
-.progress {
+.fhls-progress {
   position: relative;
   display: inline-block;
   width: 5em;
@@ -193,10 +193,10 @@ img.webloftlogo {
   animation: spin 1s infinite steps(8);
 }
 
-.progress:before,
-.progress:after,
-.progress > div:before,
-.progress > div:after {
+.fhls-progress:before,
+.fhls-progress:after,
+.fhls-progress > div:before,
+.fhls-progress > div:after {
   content: '';
   position: absolute;
   top: 0;
@@ -209,21 +209,21 @@ img.webloftlogo {
   transform-origin: 50% 2.5em; /* container height / 2 */
 }
 
-.progress:before {
+.fhls-progress:before {
   background: #555;
 }
 
-.progress:after {
+.fhls-progress:after {
   transform: rotate(-45deg);
   background: #777;
 }
 
-.progress > div:before {
+.fhls-progress > div:before {
   transform: rotate(-90deg);
   background: #999;
 }
 
-.progress > div:after {
+.fhls-progress > div:after {
   transform: rotate(-135deg);
   background: #bbb;
 }
