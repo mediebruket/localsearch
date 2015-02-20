@@ -34,9 +34,9 @@ if ( ! defined( 'WPINC' ) ) {
      * Add stylesheet to the page
      */
     function finnlokalhistorie_safely_add_stylesheet() {
-        wp_enqueue_style( 'finnlokalhistorie-shortcode-style', plugins_url('/css/public.css', __FILE__) );
-        wp_enqueue_script( 'webloft-script', plugins_url( 'js/public.js', __FILE__ ), array('jquery') );
-        wp_enqueue_script( 'webloft-tab-script', plugins_url( 'js/tabcontent.js', __FILE__ ), array('jquery') );
+        wp_register_style( 'finnlokalhistorie-shortcode-style', plugins_url('/css/public.css', __FILE__) );
+        wp_register_script( 'finnlokalhistorie-script', plugins_url( 'js/public.js', __FILE__ ), array('jquery') );
+        wp_register_script( 'webloft-tab-script', plugins_url( 'js/tabcontent.js', __FILE__ ), array('jquery') );
     }
 
 // FIRST COMES THE SHORTCODE... EH, CODE!
@@ -97,3 +97,13 @@ return $htmlout;
 }; // end function
 
 add_shortcode("finnlokalhistorie_skjema", "finnlokalhistorie_func");
+
+function fhls_enqueue_style() {
+  global $post;
+  if ( is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'finnlokalhistorie_skjema' ) ) {
+    wp_enqueue_style('finnlokalhistorie-shortcode-style');
+    wp_enqueue_script( 'finnlokalhistorie-script' );
+    wp_enqueue_script( 'webloft-tab-script' ); // in order to prevent enqueueing a script more than once if localhistory search is active
+  }
+}
+add_action( 'wp_enqueue_scripts', 'fhls_enqueue_style');
